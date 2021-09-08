@@ -65,9 +65,14 @@ class _MyHomePageState extends State<MyHomePage> {
               'Tap to Schedule notification after 10 Seconds',
             ),
             TextButton(onPressed: (){
-              DateTime now = DateTime.now().add(Duration(seconds: 10));
-              // Create Your desire Date Time and Schedule the Notification
-              NotificationsMgr.getInstance.showNotification(1, "This is scheduled notification", "Awesome Notificetion", now);
+              DateTime dob = DateTime(1990, 1, 25);                        // This is your Birthdate (Not used in Our Scenario)
+              DateTime thisYearDOB = DateTime(DateTime.now().year, 1, 25); // Just change the Year as Current year
+              for (int i=0; i<100; i++) {                                  // Schedule Notification till 100 Years
+                DateTime diffDuration = DateTime(thisYearDOB.year+i, thisYearDOB.month, thisYearDOB.year);  // Add Year Diffrence and create new Time
+                // Create Your desire Date Time and Schedule the Notification
+                NotificationsMgr.getInstance.showNotification(i, "Happy Birthday...", "Awesome Notification", diffDuration);
+                // If you want to Modify the Notification Like Delete in that case this Notification id Will help you.
+              }
             }, child: Text("Schedule"))
           ],
         ),
